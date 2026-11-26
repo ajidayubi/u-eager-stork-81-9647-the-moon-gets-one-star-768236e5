@@ -12,6 +12,9 @@ if (REVIEW.length < 1 || REVIEW.length > 120) {
 if (REVIEW.trim().length === 0) {
   throw new Error("review must not be only whitespace");
 }
+if (REVIEW !== REVIEW.trim()) {
+  throw new Error("review must not start or end with whitespace");
+}
 
 mkdirSync("/output", { recursive: true });
 writeFileSync("/output/entry.txt", REVIEW, "utf8");
